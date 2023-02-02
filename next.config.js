@@ -15,6 +15,8 @@ const nextConfig = {
   },
   env: {
     kakaokey: 'dc629edb6c7c6ce0791c0f11c9b5d459',
+    baseURL:
+      'https://port-0-place-sharing-platform-883524lbtbkgal.gksl2.cloudtype.app',
   },
 };
 

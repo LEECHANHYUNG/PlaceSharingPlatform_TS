@@ -5,10 +5,10 @@ import { Header } from '../styled/sharedStyled';
 const MainHeader = (): JSX.Element => {
   return (
     <Header>
-      <div className="logo">
+      <Link href="/" className="logo">
         <Logo />
         <h2>PlaceSharing</h2>
-      </div>
+      </Link>
       <div className="nav">
         <nav>
           <ul>

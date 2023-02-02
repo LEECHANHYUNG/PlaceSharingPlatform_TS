@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 export const MapContainer = styled.section`
   width: 76%;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 84px);
   display: inline-block;
 `;
 export const KeyWordSearchWrapper = styled.div`
@@ -12,7 +12,7 @@ export const KeyWordSearchWrapper = styled.div`
   width: 100%;
   border: 2px solid #111;
   z-index: 100;
-
+  transition: 0.5s;
   .search-glass {
     cursor: pointer;
   }
@@ -29,7 +29,7 @@ export const KeyWordSearchWrapper = styled.div`
   }
   &:focus-within {
     border: 2px solid var(--color-main);
-    transition: 1s;
+    transition: 0.5s;
   }
   .searchInput .icon {
     padding-right: 20px;
