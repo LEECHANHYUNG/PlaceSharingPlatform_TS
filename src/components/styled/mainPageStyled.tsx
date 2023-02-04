@@ -5,7 +5,7 @@ export const MapContainer = styled.section`
   display: inline-block;
 `;
 export const KeyWordSearchWrapper = styled.div`
-  position: absolute;
+  position: relative;
   top: 0px;
   background: #fff;
   padding: 5px 20px;
@@ -46,4 +46,46 @@ export const PlaceListWrapper = styled.section`
   position: relative;
   display: inline-block;
   height: calc(100vh - 80px);
+  overflow-y: scroll;
+`;
+
+export const PlaceItemWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  background: #fff;
+  padding: 10px 10px;
+  line-height: 30px;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding-bottom: 40px;
+  text-decoration: none;
+  color: #111;
+  list-style: none;
+  .container {
+    width: 100%;
+  }
+  .name {
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 50px;
+  }
+  .address {
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+  .option {
+    font-size: 14px;
+    color: #999;
+  }
+  .line {
+    position: absolute;
+    width: 90%;
+    border-bottom: 2px solid #6a9eff;
+    bottom: 20px;
+  }
 `;

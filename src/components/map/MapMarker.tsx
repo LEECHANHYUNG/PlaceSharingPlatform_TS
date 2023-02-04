@@ -35,15 +35,15 @@ class Marker {
 }
 const MapMarker = () => {
   const map = useAppSelector((state) => state.map.map);
-  const marker = new Marker();
   const placeList = useAppSelector((state) => state.placeList.placeList);
   useEffect(() => {
+    const marker = new Marker();
     kakao.maps.load(() => {
       for (const key in placeList) {
         marker.createMarker(placeList[key], map);
       }
     });
-  });
+  }, [map, placeList]);
   return <div></div>;
 };
 

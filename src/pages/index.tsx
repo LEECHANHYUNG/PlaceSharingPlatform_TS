@@ -1,7 +1,8 @@
-import axios, { AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
 import React, { Fragment } from 'react';
 import { useDispatch } from 'react-redux';
 import KaKaoMap from '../components/map/KaKaoMap';
+import PlaceList from '../components/placeList/PlaceList';
 import KeyWordSearch from '../components/search/KeyWordSearch';
 import { PlaceListWrapper } from '../components/styled/mainPageStyled';
 import AxiosService from '../service/axios.service';
@@ -42,6 +43,7 @@ const MainPage = ({ placeList }: PlaceList) => {
       <KaKaoMap />
       <PlaceListWrapper>
         <KeyWordSearch />
+        <PlaceList />
       </PlaceListWrapper>
     </Fragment>
   );
