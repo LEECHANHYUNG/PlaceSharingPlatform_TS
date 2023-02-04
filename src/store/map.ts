@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 export interface MapInitialState {
-  map: null | HTMLElement;
+  map: null | kakao.maps.Map;
 }
 const mapInitialState: MapInitialState = {
   map: null,
