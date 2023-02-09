@@ -1,7 +1,13 @@
 import React, { useEffect } from 'react';
 import { useAppSelector } from '../../store/hook';
 import { Place } from '../../pages';
-class Marker {
+
+interface MarkerInterface {
+  createMarker(elem: Place, map: any): void;
+  setMapCenterPosition(e: MouseEvent, address: string, map: any): void;
+}
+
+class Marker implements MarkerInterface {
   createMarker(elem: Place, map: any): void {
     const content = document.createElement('div');
     content.classList.add('wrap');
@@ -14,7 +20,9 @@ class Marker {
     arrow.setAttribute('id', elem.placeId);
     content.appendChild(overlay);
     content.appendChild(arrow);
-    content.addEventListener('click', (e) => this.setMapCenterPosition(e));
+    overlay.addEventListener('click', (e): void => {
+      this.setMapCenterPosition(e, elem.address, map);
+    });
     const geocoder = new kakao.maps.services.Geocoder();
     geocoder.addressSearch(elem.address, (result: any, status: any) => {
       if (status === kakao.maps.services.Status.OK) {
@@ -29,22 +37,31 @@ class Marker {
       }
     });
   }
-  setMapCenterPosition(e: MouseEvent): void {
-    const selectedPlaceId = e.target;
+  setMapCenterPosition(e: MouseEvent, address: string, map: any): void {
+    e.stopPropagation();
+    const geocoder = new kakao.maps.services.Geocoder();
+    geocoder.addressSearch(address, (result, status) => {
+      if (status === kakao.maps.services.Status.OK) {
+        const coords = new kakao.maps.LatLng(+result[0].y, +result[0].x);
+        map.setLevel(4);
+        map.panTo(coords);
+      }
+    });
+    return;
   }
 }
 const MapMarker = () => {
   const map = useAppSelector((state) => state.map.map);
-  const marker = new Marker();
   const placeList = useAppSelector((state) => state.placeList.placeList);
   useEffect(() => {
+    const marker = new Marker();
     kakao.maps.load(() => {
       for (const key in placeList) {
         marker.createMarker(placeList[key], map);
       }
     });
-  });
-  return <div></div>;
+  }, [map, placeList]);
+  return <></>;
 };
 
 export default MapMarker;
