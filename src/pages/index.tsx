@@ -1,11 +1,12 @@
 import { AxiosResponse } from 'axios';
 import React, { Fragment } from 'react';
-import { useDispatch } from 'react-redux';
 import KaKaoMap from '../components/map/KaKaoMap';
+import PlaceDetail from '../components/placeList/placeDetail/PlaceDetail';
 import PlaceList from '../components/placeList/PlaceList';
 import KeyWordSearch from '../components/search/KeyWordSearch';
 import { PlaceListWrapper } from '../components/styled/mainPageStyled';
 import AxiosService from '../service/axios.service';
+import { useAppDispatch, useAppSelector } from '../store/hook';
 import { placeListActions } from '../store/placeList';
 export interface Place {
   placeImages: string[];
@@ -35,7 +36,10 @@ interface Props {
 }
 
 const MainPage = ({ placeList }: PlaceList) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+  const selectedPlaceInfo = useAppSelector(
+    (state) => state.placeList.selectedPlaceInfo
+  );
   dispatch(placeListActions.getPlaceList(placeList));
 
   return (
@@ -43,7 +47,11 @@ const MainPage = ({ placeList }: PlaceList) => {
       <KaKaoMap />
       <PlaceListWrapper>
         <KeyWordSearch />
-        <PlaceList />
+        {selectedPlaceInfo !== null ? (
+          <PlaceDetail place={selectedPlaceInfo} />
+        ) : (
+          <PlaceList />
+        )}
       </PlaceListWrapper>
     </Fragment>
   );

@@ -1,12 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { PlaceList } from '../pages/index';
+import { Place, PlaceList } from '../pages/index';
 export interface PlaceInitialState {
   placeList: PlaceList;
   selectedPlaceId: string | null;
+  selectedPlaceInfo: Place | null;
 }
 const placeListInitialState: PlaceInitialState = {
   placeList: {},
   selectedPlaceId: null,
+  selectedPlaceInfo: null,
 };
 const placeSlice = createSlice({
   name: 'placeList',
@@ -15,8 +17,11 @@ const placeSlice = createSlice({
     getPlaceList(state, action) {
       state.placeList = action.payload;
     },
-    setSelectedPlaceList(state, action) {
+    setSelectedPlace(state, action) {
       state.selectedPlaceId = action.payload;
+      state.selectedPlaceInfo = state.placeList[action.payload]
+        ? state.placeList[action.payload]
+        : null;
     },
   },
 });

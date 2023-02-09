@@ -9,7 +9,7 @@ const PlaceItem = ({ placeId }: { placeId: string }) => {
 
   const placeList = useAppSelector((state) => state.placeList.placeList);
   const selectPlace = () => {
-    dispatch(placeListActions.setSelectedPlaceList(placeId));
+    dispatch(placeListActions.setSelectedPlace(placeId));
     const selectedPlaceAddress: string = placeList[placeId].address;
     const geocoder = new kakao.maps.services.Geocoder();
 
