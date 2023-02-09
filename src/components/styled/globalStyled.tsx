@@ -4,6 +4,7 @@ const GlobalStyle = createGlobalStyle`
   :root{
    --color-main : #6a9eff ;
   }
+  
   * {
     box-sizing: border-box;
     padding: 0;
@@ -11,6 +12,13 @@ const GlobalStyle = createGlobalStyle`
     list-style : none;
     text-decoration : none;
     color : #111;
+  }
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-main);
+    border-radius: 10px;
   }
   a{
     cursor : pointer;
@@ -26,7 +34,7 @@ const GlobalStyle = createGlobalStyle`
     border-radius: 30px;
     padding: 5px 20px;
     text-align: center;
-    border: 3px solid #6a9eff;
+    border: 3px solid var(--color-main);
     position: absolute;
     top: 0px;
     cursor: pointer;
@@ -35,7 +43,7 @@ const GlobalStyle = createGlobalStyle`
   }
   .arrow {
     background: #111;
-    border: 3px solid #6a9eff;
+    border: 3px solid var(--color-main);
     border-bottom: none;
     border-left: none;
     width: 12px;
