@@ -61,6 +61,7 @@ const MapMarker = () => {
       }
     });
   }, [map, placeList]);
+
   return <></>;
 };
 
