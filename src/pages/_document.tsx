@@ -37,8 +37,9 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
           <Script
-            src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.kakaokey}&libraries=services,clusterer&autoload=false`}
+            type="text/javascript"
             strategy="beforeInteractive"
+            src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.kakaokey}&libraries=services&autoload=false`}
           />
         </body>
       </Html>

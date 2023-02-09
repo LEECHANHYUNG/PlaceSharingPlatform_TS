@@ -1,10 +1,12 @@
 import axios, { AxiosResponse } from 'axios';
 import React, { Fragment } from 'react';
+import { useDispatch } from 'react-redux';
 import KaKaoMap from '../components/map/KaKaoMap';
 import KeyWordSearch from '../components/search/KeyWordSearch';
 import { PlaceListWrapper } from '../components/styled/mainPageStyled';
 import AxiosService from '../service/axios.service';
-interface Place {
+import { placeListActions } from '../store/placeList';
+export interface Place {
   placeImages: string[];
   placeId: string;
   placeName: string;
@@ -21,7 +23,7 @@ interface Place {
     OFFICE: string;
   };
 }
-interface PlaceList {
+export interface PlaceList {
   [index: string]: Place;
 }
 interface Props {
@@ -32,7 +34,9 @@ interface Props {
 }
 
 const MainPage = ({ placeList }: PlaceList) => {
-  console.log(placeList);
+  const dispatch = useDispatch();
+  dispatch(placeListActions.getPlaceList(placeList));
+
   return (
     <Fragment>
       <KaKaoMap />
