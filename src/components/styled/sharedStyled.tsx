@@ -1,5 +1,8 @@
 import styled from 'styled-components';
-
+export interface SharedProps {
+  className?: string;
+  children?: any;
+}
 export const Header = styled.header`
   background: #fff;
   width: 100%;
@@ -35,5 +38,25 @@ export const Header = styled.header`
   }
   .nav nav ul li:nth-child(2) {
     margin: 0 20px;
+  }
+`;
+export const CardWrapper = styled.div<SharedProps>`
+  margin: 1rem auto;
+  border-radius: 6px;
+  background-color: white;
+  padding: 1rem;
+  width: 90%;
+  max-width: 80rem;
+  &.current-reservation-data {
+    border: 4px solid #6a9eff;
+    width: 70%;
+  }
+  @media screen and (max-width: 1170px) {
+    width: 80%;
+  }
+  @media screen and (max-width: 858px) {
+    &.current-reservation-data {
+      width: 70%;
+    }
   }
 `;

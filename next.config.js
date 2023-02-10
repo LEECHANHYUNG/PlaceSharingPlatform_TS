@@ -13,6 +13,11 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  images: {
+    domains: [
+      'officesharingplatform-image-server.s3.ap-northeast-2.amazonaws.com',
+    ],
+  },
   env: {
     kakaokey: 'dc629edb6c7c6ce0791c0f11c9b5d459',
     baseURL:

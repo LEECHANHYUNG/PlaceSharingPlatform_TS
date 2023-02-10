@@ -19,6 +19,7 @@ export interface Place {
   closeDays: string[];
   openTime: string;
   closeTime: string;
+  reviewQuantity: string;
   roomInfo: {
     DESK: string;
     MEETINGROOM: string;
