@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import KaKaoMap from '../components/map/KaKaoMap';
 import PlaceDetail from '../components/placeList/placeDetail/PlaceDetail';
 import PlaceList from '../components/placeList/PlaceList';
@@ -42,6 +42,9 @@ const MainPage = ({ placeList }: PlaceList) => {
     (state) => state.placeList.selectedPlaceInfo
   );
   dispatch(placeListActions.getPlaceList(placeList));
+  useEffect(() => {
+    dispatch(placeListActions.getFilteredPlaceList(placeList));
+  }, [placeList, dispatch]);
 
   return (
     <Fragment>
