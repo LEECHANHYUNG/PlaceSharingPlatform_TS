@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import KaKaoMap from '../components/map/KaKaoMap';
 import PlaceDetail from '../components/placeList/placeDetail/PlaceDetail';
 import PlaceList from '../components/placeList/PlaceList';
@@ -21,9 +21,9 @@ export interface Place {
   closeTime: string;
   reviewQuantity: string;
   roomInfo: {
-    DESK: string;
-    MEETINGROOM: string;
-    OFFICE: string;
+    DESK: string | undefined;
+    MEETINGROOM: string | undefined;
+    OFFICE: string | undefined;
   };
 }
 export interface PlaceList {
@@ -42,6 +42,9 @@ const MainPage = ({ placeList }: PlaceList) => {
     (state) => state.placeList.selectedPlaceInfo
   );
   dispatch(placeListActions.getPlaceList(placeList));
+  useEffect(() => {
+    dispatch(placeListActions.getFilteredPlaceList(placeList));
+  }, [placeList, dispatch]);
 
   return (
     <Fragment>
