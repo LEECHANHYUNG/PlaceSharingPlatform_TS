@@ -19,6 +19,7 @@ const KeyWordSearch = () => {
         });
         if (response.status === 200) {
           dispatch(placeListActions.getFilteredPlaceList(response.data));
+          dispatch(placeListActions.setSelectedPlace(null));
         } else {
           throw new Error('Error');
         }

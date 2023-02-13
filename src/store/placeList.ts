@@ -5,12 +5,14 @@ export interface PlaceInitialState {
   selectedPlaceId: string | null;
   selectedPlaceInfo: Place | null;
   filteredPlaceList: PlaceList;
+  marker: any[];
 }
 const placeListInitialState: PlaceInitialState = {
   placeList: {},
   selectedPlaceId: null,
   selectedPlaceInfo: null,
   filteredPlaceList: {},
+  marker: [],
 };
 const placeSlice = createSlice({
   name: 'placeList',
@@ -23,8 +25,14 @@ const placeSlice = createSlice({
       state.filteredPlaceList = action.payload;
     },
     setSelectedPlace(state, action) {
-      state.selectedPlaceId = action.payload;
+      state.selectedPlaceId = action.payload ? action.payload.placeId : null;
       state.selectedPlaceInfo = action.payload ? action.payload : null;
+    },
+    getMarker(state, action) {
+      state.marker.push(action.payload);
+    },
+    resetMarker(state) {
+      state.marker = [];
     },
   },
 });

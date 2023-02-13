@@ -29,9 +29,9 @@ export interface IPlaceOpeningHours {
   main: boolean;
 }
 export interface IPlaceAvailableItem {
-  DESK: string;
-  MEETINGROOM: string;
-  OFFICE: string;
+  DESK: string | undefined;
+  MEETINGROOM: string | undefined;
+  OFFICE: string | undefined;
 }
 const PlaceDetail = ({ place }: { place: Place }) => {
   const dispatch = useAppDispatch();
@@ -56,6 +56,7 @@ const PlaceDetail = ({ place }: { place: Place }) => {
     closedDays: place.closeDays,
     main: false,
   };
+  console.log(place.roomInfo);
   const placeAvailableData: IPlaceAvailableItem = {
     DESK: place.roomInfo.DESK,
     MEETINGROOM: place.roomInfo.MEETINGROOM,

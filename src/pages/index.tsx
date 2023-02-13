@@ -21,9 +21,9 @@ export interface Place {
   closeTime: string;
   reviewQuantity: string;
   roomInfo: {
-    DESK: string;
-    MEETINGROOM: string;
-    OFFICE: string;
+    DESK: string | undefined;
+    MEETINGROOM: string | undefined;
+    OFFICE: string | undefined;
   };
 }
 export interface PlaceList {
