@@ -5,6 +5,7 @@ import PlaceDetail from '../components/placeList/placeDetail/PlaceDetail';
 import PlaceList from '../components/placeList/PlaceList';
 import KeyWordSearch from '../components/search/KeyWordSearch';
 import { PlaceListWrapper } from '../components/styled/mainPageStyled';
+import { Button } from '../components/styled/sharedStyled';
 import AxiosService from '../service/axios.service';
 import { useAppDispatch, useAppSelector } from '../store/hook';
 import { placeListActions } from '../store/placeList';
@@ -41,7 +42,11 @@ const MainPage = ({ placeList }: PlaceList) => {
   const selectedPlaceInfo = useAppSelector(
     (state) => state.placeList.selectedPlaceInfo
   );
+  const isFiltered = useAppSelector((state) => state.placeList.isFiltered);
   dispatch(placeListActions.getPlaceList(placeList));
+  const filterResetHandler = (): void => {
+    dispatch(placeListActions.resetFilteredPlaceList());
+  };
   useEffect(() => {
     dispatch(placeListActions.getFilteredPlaceList(placeList));
   }, [placeList, dispatch]);
@@ -57,6 +62,11 @@ const MainPage = ({ placeList }: PlaceList) => {
           <PlaceList />
         )}
       </PlaceListWrapper>
+      {isFiltered ? (
+        <Button onClick={filterResetHandler}>검색 초기화</Button>
+      ) : (
+        ''
+      )}
     </Fragment>
   );
 };

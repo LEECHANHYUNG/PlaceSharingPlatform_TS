@@ -5,6 +5,7 @@ export interface PlaceInitialState {
   selectedPlaceId: string | null;
   selectedPlaceInfo: Place | null;
   filteredPlaceList: PlaceList;
+  isFiltered: boolean;
   marker: any[];
 }
 const placeListInitialState: PlaceInitialState = {
@@ -12,6 +13,7 @@ const placeListInitialState: PlaceInitialState = {
   selectedPlaceId: null,
   selectedPlaceInfo: null,
   filteredPlaceList: {},
+  isFiltered: false,
   marker: [],
 };
 const placeSlice = createSlice({
@@ -23,6 +25,10 @@ const placeSlice = createSlice({
     },
     getFilteredPlaceList(state, action) {
       state.filteredPlaceList = action.payload;
+      Object.keys(state.filteredPlaceList).length ===
+      Object.keys(state.placeList).length
+        ? (state.isFiltered = false)
+        : (state.isFiltered = true);
     },
     setSelectedPlace(state, action) {
       state.selectedPlaceId = action.payload ? action.payload.placeId : null;
@@ -33,6 +39,10 @@ const placeSlice = createSlice({
     },
     resetMarker(state) {
       state.marker = [];
+    },
+    resetFilteredPlaceList(state) {
+      state.filteredPlaceList = state.placeList;
+      state.isFiltered = false;
     },
   },
 });

@@ -5,7 +5,7 @@ const nextConfig = {
     return [
       {
         source: '/:path*',
-        destination: `https://port-0-place-sharing-platform-883524lbtbkgal.gksl2.cloudtype.app/:path*`,
+        destination: `http://131.186.27.93:18080/:path*`,
       },
     ];
   },
