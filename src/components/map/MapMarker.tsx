@@ -12,7 +12,7 @@ const MapMarker = () => {
   const marker = useAppSelector((state) => state.placeListReducer.marker);
   const map = useAppSelector((state) => state.mapReducer.map);
   const placeList = useAppSelector(
-    (state) => state.placeListReducer.filteredPlaceList.placeList
+    (state) => state.placeListReducer.filteredPlaceList
   );
 
   useEffect(() => {

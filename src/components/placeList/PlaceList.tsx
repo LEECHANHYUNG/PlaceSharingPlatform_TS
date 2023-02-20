@@ -5,7 +5,7 @@ import { NoPlaceWrapper } from '../styled/mainPageStyled';
 import PlaceItem from './PlaceItem';
 const PlaceList = () => {
   const placeList = useAppSelector(
-    (state) => state.placeListReducer.filteredPlaceList.placeList
+    (state) => state.placeListReducer.filteredPlaceList
   );
   return (
     <Fragment>

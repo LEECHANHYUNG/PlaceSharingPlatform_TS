@@ -90,3 +90,33 @@ export const Button = styled.button`
     top: 180px;
   }
 `;
+export const AuthHeaderWrapper = styled.a`
+  color: #111;
+  text-decoration: none;
+  font-weight: 900;
+  text-align: center;
+
+  h1 {
+    font-size: 30px;
+    cursor: pointer;
+  }
+`;
+export const InputWrapper = styled.input`
+  width: 100%;
+  height: 40px;
+  margin: 10px auto;
+
+  &.invalid {
+    border-color: red;
+    background: #fbdada;
+  }
+  &.invalid:focus {
+    outline: none;
+    border-color: #4f005f;
+    background: #f6dbfc;
+  }
+`;
+
+export const EmailWrapper = styled.div`
+  width: 100%;
+`;

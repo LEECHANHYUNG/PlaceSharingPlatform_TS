@@ -28,7 +28,7 @@ export interface Place {
   };
 }
 export interface PlaceList {
-  placeList: { [index: number]: Place };
+  [index: number]: Place;
 }
 interface Props {
   props: {
@@ -37,7 +37,7 @@ interface Props {
   revalidate: number;
 }
 
-const MainPage = (placeList: PlaceList) => {
+const MainPage = ({ placeList }: any) => {
   const dispatch = useAppDispatch();
   const selectedPlaceInfo = useAppSelector(
     (state) => state.placeListReducer.selectedPlaceInfo
@@ -51,7 +51,7 @@ const MainPage = (placeList: PlaceList) => {
   };
   useEffect(() => {
     dispatch(placeListActions.getFilteredPlaceList(placeList));
-  }, [placeList, dispatch]);
+  }, []);
 
   return (
     <Fragment>
@@ -74,7 +74,7 @@ const MainPage = (placeList: PlaceList) => {
 };
 
 export async function getStaticProps(): Promise<Props> {
-  let placeList: PlaceList = { placeList: {} };
+  let placeList: PlaceList = {};
 
   const response: AxiosResponse = await axios.get(
     `${process.env.serverURL}main`

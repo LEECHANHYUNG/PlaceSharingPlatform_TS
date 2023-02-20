@@ -9,10 +9,10 @@ export interface PlaceInitialState {
   marker: any[];
 }
 const placeListInitialState: PlaceInitialState = {
-  placeList: { placeList: {} },
+  placeList: {},
   selectedPlaceId: null,
   selectedPlaceInfo: null,
-  filteredPlaceList: { placeList: {} },
+  filteredPlaceList: {},
   isFiltered: false,
   marker: [],
 };
