@@ -3,16 +3,16 @@ import { Place } from '../../../pages';
 import { useAppDispatch } from '../../../store/hook';
 import { placeListActions } from '../../../store/placeList';
 import ArrowLeft from '../../../../public/svg/arrow-left.svg';
-import Link from 'next/link';
 import PlaceImage from './PlaceImage';
 import PlaceInfo from './PlaceInfo';
 import PlaceAdditional from './PlaceAdditional';
 import PlaceOpeningHours from './PlaceOpeningHours';
 import PlaceAvailableItem from './PlaceAvailableItem';
 import { PlaceDetailWrapper } from '../../styled/PlaceDetail';
+import Link from 'next/link';
 export interface IPlaceInfo {
   placeName: string;
-  description: string;
+  description?: string;
   address: string;
   rating: string;
   reviewQuantity: string;
@@ -56,12 +56,12 @@ const PlaceDetail = ({ place }: { place: Place }) => {
     closedDays: place.closeDays,
     main: false,
   };
-  console.log(place.roomInfo);
   const placeAvailableData: IPlaceAvailableItem = {
     DESK: place.roomInfo.DESK,
     MEETINGROOM: place.roomInfo.MEETINGROOM,
     OFFICE: place.roomInfo.OFFICE,
   };
+
   return (
     <PlaceDetailWrapper>
       <div className="container">

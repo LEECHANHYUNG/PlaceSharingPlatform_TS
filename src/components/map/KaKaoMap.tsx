@@ -5,11 +5,9 @@ import { mapActions } from '../../store/map';
 import { MapContainer } from '../styled/mainPageStyled';
 import MapMarker from './MapMarker';
 const KaKaoMap = (): JSX.Element => {
-  const [map, setMap] = useState<SetStateAction<kakao.maps.Map>>();
+  const [map, setMap] = useState<kakao.maps.Map>();
   const dispatch = useAppDispatch();
-  const officeList = useAppSelector(
-    (state) => state.placeList.filteredPlaceList
-  );
+
   useEffect(() => {
     dispatch(mapActions.getMap(map));
   }, [map, dispatch]);

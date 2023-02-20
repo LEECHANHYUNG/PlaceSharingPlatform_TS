@@ -3,7 +3,7 @@ import React from 'react';
 import Star from '../../../../public/svg/star.svg';
 import { PlaceInfoWrapper } from '../../styled/PlaceDetail';
 import { IPlaceInfo } from './PlaceDetail';
-const PlaceInfo = ({ placeInfo }: { placeInfo: IPlaceInfo }) => {
+const PlaceInfo = ({ placeInfo }: any) => {
   return (
     <PlaceInfoWrapper main={placeInfo.main}>
       <div className="review">

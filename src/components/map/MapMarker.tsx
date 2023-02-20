@@ -9,10 +9,10 @@ interface MarkerInterface {
 }
 const MapMarker = () => {
   const dispatch = useAppDispatch();
-  const map = useAppSelector((state) => state.map.map);
-  const marker = useAppSelector((state) => state.placeList.marker);
+  const marker = useAppSelector((state) => state.placeListReducer.marker);
+  const map = useAppSelector((state) => state.mapReducer.map);
   const placeList = useAppSelector(
-    (state) => state.placeList.filteredPlaceList
+    (state) => state.placeListReducer.filteredPlaceList.placeList
   );
 
   useEffect(() => {
@@ -75,7 +75,7 @@ const MapMarker = () => {
       const bounds = new kakao.maps.LatLngBounds();
       const marker = new Marker();
       for (const key in placeList) {
-        marker.createMarker(placeList[key], map);
+        marker.createMarker(placeList[+key], map);
       }
     });
   }, [map, placeList, dispatch]);

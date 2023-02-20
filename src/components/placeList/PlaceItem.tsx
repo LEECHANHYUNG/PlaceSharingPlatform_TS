@@ -6,7 +6,7 @@ import { PlaceItemWrapper } from '../styled/mainPageStyled';
 
 const PlaceItem = ({ placeInfo }: { placeInfo: Place }) => {
   const dispatch = useAppDispatch();
-  const map = useAppSelector((state) => state.map.map);
+  const map = useAppSelector((state) => state.mapReducer.map);
 
   const selectPlace = () => {
     dispatch(placeListActions.setSelectedPlace(placeInfo));
@@ -29,7 +29,7 @@ const PlaceItem = ({ placeInfo }: { placeInfo: Place }) => {
           <div className="name">{placeInfo.placeName}</div>
           <div className="address">{placeInfo.address}</div>
           <div className="option">
-            {placeInfo.placeDescription.slice(0, 50)}
+            {placeInfo.placeDescription?.slice(0, 50)}
           </div>
         </div>
         <div className="line"></div>

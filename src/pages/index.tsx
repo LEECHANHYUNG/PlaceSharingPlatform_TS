@@ -1,4 +1,4 @@
-import { AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import React, { Fragment, useEffect } from 'react';
 import KaKaoMap from '../components/map/KaKaoMap';
 import PlaceDetail from '../components/placeList/placeDetail/PlaceDetail';
@@ -28,7 +28,7 @@ export interface Place {
   };
 }
 export interface PlaceList {
-  [index: string]: Place;
+  placeList: { [index: number]: Place };
 }
 interface Props {
   props: {
@@ -37,12 +37,14 @@ interface Props {
   revalidate: number;
 }
 
-const MainPage = ({ placeList }: PlaceList) => {
+const MainPage = (placeList: PlaceList) => {
   const dispatch = useAppDispatch();
   const selectedPlaceInfo = useAppSelector(
-    (state) => state.placeList.selectedPlaceInfo
+    (state) => state.placeListReducer.selectedPlaceInfo
   );
-  const isFiltered = useAppSelector((state) => state.placeList.isFiltered);
+  const isFiltered = useAppSelector(
+    (state) => state.placeListReducer.isFiltered
+  );
   dispatch(placeListActions.getPlaceList(placeList));
   const filterResetHandler = (): void => {
     dispatch(placeListActions.resetFilteredPlaceList());
@@ -72,9 +74,11 @@ const MainPage = ({ placeList }: PlaceList) => {
 };
 
 export async function getStaticProps(): Promise<Props> {
-  let placeList: PlaceList = {};
+  let placeList: PlaceList = { placeList: {} };
 
-  const response: AxiosResponse = await AxiosService.instance.get('/main');
+  const response: AxiosResponse = await axios.get(
+    `${process.env.serverURL}main`
+  );
   if (response.status === 200) {
     placeList = response.data;
   } else {
