@@ -44,10 +44,8 @@ const PlaceImage = ({ images }: { images: string[] }) => {
             <Image
               src={image}
               alt="공간 이미지"
-              fill
-              style={{
-                objectFit: 'cover',
-              }}
+              layout="fill"
+              objectFit="cover"
               sizes="100%"
               className="img"
               priority

@@ -10,7 +10,13 @@ export const Header = styled.header`
   padding: 10px 20px;
   border-bottom: 1px solid var(--color-main);
   margin: auto;
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  a {
+    display: flex;
+    width: 40%;
+  }
   .logo {
     width: 50%;
     height: 100%;
@@ -22,22 +28,27 @@ export const Header = styled.header`
   .logo h2 {
     margin-left: 10px;
   }
-  .nav {
-    width: 50%;
+  nav {
+    width: 20%;
+    min-width: 310px;
     height: 100%;
     float: right;
-  }
-  nav {
     height: 100%;
   }
-  .nav nav ul {
+  nav ul {
     height: 100%;
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
   }
-  .nav nav ul li:nth-child(2) {
+  nav ul li a {
+    width: 100%;
+    text-align: center;
+  }
+  nav ul li:nth-child(2) {
     margin: 0 20px;
+    width: 10px;
   }
 `;
 export const CardWrapper = styled.div<SharedProps>`

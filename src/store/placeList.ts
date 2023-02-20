@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Place, PlaceList } from '../pages/index';
 export interface PlaceInitialState {
   placeList: PlaceList;
@@ -9,10 +9,10 @@ export interface PlaceInitialState {
   marker: any[];
 }
 const placeListInitialState: PlaceInitialState = {
-  placeList: {},
+  placeList: { placeList: {} },
   selectedPlaceId: null,
   selectedPlaceInfo: null,
-  filteredPlaceList: {},
+  filteredPlaceList: { placeList: {} },
   isFiltered: false,
   marker: [],
 };
@@ -20,17 +20,17 @@ const placeSlice = createSlice({
   name: 'placeList',
   initialState: placeListInitialState,
   reducers: {
-    getPlaceList(state, action) {
+    getPlaceList(state, action: PayloadAction<PlaceList>) {
       state.placeList = action.payload;
     },
-    getFilteredPlaceList(state, action) {
+    getFilteredPlaceList(state, action: PayloadAction<PlaceList>) {
       state.filteredPlaceList = action.payload;
       Object.keys(state.filteredPlaceList).length ===
       Object.keys(state.placeList).length
         ? (state.isFiltered = false)
         : (state.isFiltered = true);
     },
-    setSelectedPlace(state, action) {
+    setSelectedPlace(state, action: PayloadAction<Place | null>) {
       state.selectedPlaceId = action.payload ? action.payload.placeId : null;
       state.selectedPlaceInfo = action.payload ? action.payload : null;
     },

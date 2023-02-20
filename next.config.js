@@ -30,6 +30,7 @@ const nextConfig = {
   env: {
     kakaokey: 'dc629edb6c7c6ce0791c0f11c9b5d459',
     baseURL: 'http://localhost:3000',
+    serverURL: 'http://131.186.27.93:18080/',
   },
 };
 

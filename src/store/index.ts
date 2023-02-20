@@ -1,12 +1,12 @@
 import { applyMiddleware, configureStore } from '@reduxjs/toolkit';
-import map from './map';
-import placeList from './placeList';
+import mapReducer from './map';
+import placeListReducer from './placeList';
 import logger from 'redux-logger';
 applyMiddleware(logger);
 const store = configureStore({
   reducer: {
-    map,
-    placeList,
+    mapReducer,
+    placeListReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
